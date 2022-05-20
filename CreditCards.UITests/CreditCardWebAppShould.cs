@@ -80,5 +80,18 @@ namespace CreditCards.UITests
                 Assert.NotEqual(initialToken, reloadToken);
             }
         }
+
+        [Fact]
+        public void DisplayProductsAndRates()
+        {
+            using (IWebDriver driver = new ChromeDriver())
+            {
+                driver.Navigate().GoToUrl(HomeUrl);
+
+                string firstProduct = driver.FindElement(By.TagName("td")).Text;
+
+                Assert.Equal("Easy Credit Card", firstProduct);
+            }
+        }
     }
 }
